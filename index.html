@@ -4,13 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock | Paper | Scissors</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <p id="para">The Game</p>
+    <div id="board">
+        <div id="gameHeader">
+            <h1>Rock Paper Scissors</h1>
+        </div>
+        <div id="gameBody">
+            <div id="battleGround">
+                <p id="message"></p>
+                <div id="playerSide">
+                    <div id="playerSideInfo">
+                            <h2>YOU</h2>
+                            <div id="playerScore">
+                                    <div class="score playerScore ps1"></div>
+                                    <div class="score playerScore ps2"></div>
+                                    <div class="score playerScore ps3"></div>
+                                    <div class="score playerScore ps4"></div>
+                                    <div class="score playerScore ps5"></div>
+                            </div>
+                    </div>
+                    <div id="playerSideGloves">
+                        <div id="playerInsulation">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="computerSide">
+                    <div id="computerSideInfo">
+                            <h2>CPU</h2>
+                            <div id="computerScore">
+                                    <div class="score computerScore cs1"></div>
+                                    <div class="score computerScore cs2"></div>
+                                    <div class="score computerScore cs3"></div>
+                                    <div class="score computerScore cs4"></div>
+                                    <div class="score computerScore cs5"></div>
+                            </div>
+                    </div>
+                    <div id="computerSideGloves">
+                        <div id="computerInsulation">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="battleGroundFooter">
+                <h4>Pick your poison...</h4>
+            </div>
+        </div>
+        <div id="gameFooter">
+            <div class="choices" id="theRock">
+                <svg id="rocksvg" class="moves" width="75pt" height="75pt" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                    xml:space="preserve">
+                    <path fill="#BAEE75" d="M356,76h-90c0,27.637,22.363,50,50,50c-27.637,0-50,22.363-50,50h-20c0-5.051,0.547-9.975,1.568-14.725
+                                C240.116,166.749,230.935,170,221,170c-14.125,0-26.744-6.547-35-16.759C177.744,163.453,165.125,170,151,170
+                                c-9.245,0-17.844-2.805-25-7.604V231c0,16.569,13.431,30,30,30h10v251h180V261h10c16.569,0,30-13.431,30-30V106
+                                C386,89.431,372.569,76,356,76z"></path>
+                    <path fill="#BAEE75"
+                        d="M361,0c-13.807,0-25,11.193-25,25v31h20c11.248,0,21.637,3.735,30,10.027V25C386,11.193,374.807,0,361,0z">
+                    </path>
+                    <path fill="#BAEE75" d="M291,0c-13.807,0-25,11.193-25,25v31h50V25C316,11.193,304.807,0,291,0z"></path>
+                    <path fill="#BAEE75"
+                        d="M221,0c-13.807,0-25,11.193-25,25v100c0,13.807,11.193,25,25,25s25-11.193,25-25V25C246,11.193,234.807,0,221,0z">
+                    </path>
+
+                <path fill="#BAEE75"
+                        d="M151,0c-13.807,0-25,11.193-25,25v100c0,13.807,11.193,25,25,25s25-11.193,25-25V25C176,11.193,164.807,0,151,0z">
+                    </path>
+                </svg>
+            </div>
+            <div class="choices" id="thePaper">
+                <svg id="papersvg" class="moves" height="75pt" viewBox="-53 0 511 512" width="75pt" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#BAEE75"
+                        d="m373.832031 64c-17.664062 0-32 14.335938-32 32v176c0 2.945312-2.386719 5.332031-5.332031 5.332031s-5.332031-2.386719-5.332031-5.332031v-218.667969c0-17.664062-14.335938-32-32-32-17.664063 0-32 14.335938-32 32v218.667969c0 2.945312-2.390625 5.332031-5.335938 5.332031-2.941406 0-5.332031-2.386719-5.332031-5.332031v-240c0-17.664062-14.335938-32-32-32s-32 14.335938-32 32v240c0 2.945312-2.390625 5.332031-5.332031 5.332031-2.945313 0-5.335938-2.386719-5.335938-5.332031v-218.667969c0-17.664062-14.335937-32-32-32-17.664062 0-32 14.335938-32 32v249.453125l-68.628906-42.09375h-.0625c-4.695313-2.984375-10.453125-4.691406-16.640625-4.691406-17.707031 0-32 14.292969-32 32 0 6.1875 1.707031 12.160156 4.90625 17.066406l-.042969-.085937 98.324219 165.3125c15.382812 25.855469 43.246094 41.707031 73.347656 41.707031h143.464844c47.125 0 85.332031-38.207031 85.332031-85.332031v-330.667969c0-17.664062-14.335937-32-32-32zm0 0">
+                    </path>
+                </svg>
+            </div>  
+            <div class="choices" id="theScissors">
+                <svg id="scissorssvg" class="moves" height="75pt" width="75pt" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.009 512.009"
+                    xml:space="preserve">
+                    <path fill="#BAEE75" d="M446.102,408.415c-6.521-31.26-30.876-56.531-62.065-64.385c-21.334-5.354-42.773-2.656-61.565,7.604L298.4,297.208
+                            l92.117-221.064c2.771-6.656,4.167-13.667,4.167-20.844c0-18.156-9.021-35.01-24.126-45.083L357.932,1.8
+                            c-2.625-1.76-5.896-2.26-8.896-1.365c-3.021,0.875-5.5,3.042-6.771,5.927l-86.252,195.013L169.758,6.363
+                            c-1.271-2.885-3.75-5.052-6.771-5.927c-3.021-0.896-6.292-0.396-8.896,1.365l-12.625,8.417
+                            C126.361,20.29,117.34,37.144,117.34,55.3c0,7.177,1.396,14.187,4.167,20.844l92.114,221.083l-24.091,54.417
+                            c-12.396-6.771-26.084-10.302-40.189-10.302c-47.064,0-85.337,38.281-85.337,85.333c0,47.052,38.272,85.333,85.337,85.333
+                            c47.064,0,85.337-38.281,85.337-85.333c0-31.553,10.326-54.621,21.32-70.391c10.688,15.298,20.671,37.202,21.307,67.349
+                            c1,47.188,36.522,85.948,80.836,88.26c1.542,0.073,3.063,0.115,4.563,0.115c25.022,0,48.439-10.729,64.815-29.844
+                            C444.894,461.884,451.665,434.998,446.102,408.415z M149.338,469.342c-23.521,0-42.667-19.135-42.667-42.667
+                            s19.146-42.667,42.667-42.667c23.521,0,42.667,19.135,42.667,42.667S172.859,469.342,149.338,469.342z M256.004,320.009
+                            c-11.771,0-21.333-9.573-21.333-21.333s9.563-21.333,21.333-21.333c11.771,0,21.333,9.573,21.333,21.333
+                            S267.775,320.009,256.004,320.009z M362.671,469.342c-23.521,0-42.667-19.135-42.667-42.667s19.146-42.667,42.667-42.667
+                            c23.521,0,42.667,19.135,42.667,42.667S386.192,469.342,362.671,469.342z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
     <script>
+    function divBy3 (){
+        let a = 3;
+        let start = 160;
+        let count = 30;
+        while (count!=0){
+            console.log(`${a} * ${start} is ${a*start}`);
+            start++;
+            count--;
+        }
+    }
+    //divBy3();
+    
     let playerScore = 0;
     let computerScore = 0;
+    let finalScore = 5;
+    let counter = 0;
+
+    let x = document.getElementById('message');
+    let rock = document.getElementById('theRock');
+    let paper = document.getElementById('thePaper');
+    let scissors = document.getElementById('theScissors');
+
     //Returns a string with the first character CAPITALIZED
     function capitalize(a) {
         a = a.toLowerCase();
@@ -42,14 +158,19 @@
         if (playerSelection=='Rock'){
             switch(computerSelection){
                 case 'Rock':
+                    console.log('Rock vs Rock');
                     return 'You Tie! Rock is equal to Rock';
                     break;
                 case 'Paper':
+                    console.log('Rock vs Paper');
                     computerScore++;
+                    updateBubbleScore('c');
                     return 'You Lose! Paper beats Rock';
                     break;
                 case 'Scissors': 
+                    console.log('Rock vs Scissors');
                     playerScore++;
+                    updateBubbleScore('p');
                     return 'You Win! Rock beats Scissors';
                     break;
                 default: 
@@ -59,14 +180,19 @@
         else if (playerSelection=='Paper') {
             switch (computerSelection) {
                 case 'Rock':
+                    console.log('Paper vs Rock');
                     playerScore++;
+                    updateBubbleScore('p');
                     return 'You Win! Paper beats Rock';
                     break;
                 case 'Paper':
+                    console.log('Paper vs Paper');
                     return 'You Tie! Paper is equal to Paper';
                     break;
                 case 'Scissors':
+                    console.log('Paper vs Scissors');
                     computerScore++;
+                    updateBubbleScore('c');
                     return 'You Lose! Scissors beat Paper';
                     break;
                 default:
@@ -76,14 +202,19 @@
         else if (playerSelection=='Scissors') {
             switch (computerSelection) {
                 case 'Rock':
+                    console.log('Scissors vs Rock');
                     computerScore++;
+                    updateBubbleScore('c');
                     return 'You Lose! Rock beats Scissors';
                     break;
                 case 'Paper':
+                    console.log('Scissors vs Paper');
                     playerScore++;
+                    updateBubbleScore('p');
                     return 'You Win! Scissors beat Paper';
                     break;
                 case 'Scissors':
+                    console.log('Scissors vs Scissors');
                     return 'You Tie! Scissors are equal to Scissors';
                     break;
                 default:
@@ -95,27 +226,98 @@
         }
     }
 
-    //Play as many rounds as you want
-    function game (rounds) {
-        let counter = 0;
-        let playerSelect;
-
-        while (counter < 5){
-            console.log(singleRound(playerSelect = prompt('Choose: Rock, Paper, or Scissors!', 'scissors'), computerPlay()));
-            counter++;
+    //Keeps the graphical score current
+    function updateBubbleScore(tok){
+        if (computerScore>0 && tok == 'c'){
+            let a = 'cs' + computerScore;
+            console.log(a);
+            a=document.getElementsByClassName(a);
+            a[0].id="scored";
         }
-        if(playerScore > computerScore){
-            console.log('You have WON the WAR!');
-        }
-        else if (playerScore < computerScore){
-            console.log('You have LOST the WAR!');
+        else if (playerScore>0 && tok == 'p') {
+            let b = 'ps' + playerScore;
+            console.log(b);
+            b=document.getElementsByClassName(b);
+            b[0].id="scored";
         }
         else {
-            console.log('You have TIED the WAR');
+            if (computerScore == 0 && tok == 'c') {
+                let a = 'cs' + (computerScore+1);
+                console.log(a);
+                a = document.getElementsByClassName(a);
+                a[0].id = "scored";
+            }
+            else if (playerScore == 0 && tok == 'p') {
+                let b = 'ps' + (playerScore+1);
+                console.log(b);
+                b = document.getElementsByClassName(b);
+                b[0].id = "scored";
+            }
         }
     }
 
-    game(5);
+    //Pause Game after completion (STOP EVENT LISTENERS)
+    function pauseGame() {
+        document.getElementById('theRock').removeEventListener('click', rockGame, false);
+        document.getElementById('thePaper').removeEventListener('click', paperGame, false);
+        document.getElementById('theScissors').removeEventListener('click', scissorsGame, false);
+        if (playerScore > computerScore) {
+            x.innerText = 'You have WON the WAR!';
+        }
+        else if (playerScore < computerScore) {
+            x.innerText = 'You have LOST the WAR!';
+        }
+        else {
+            x.innerText = 'You have TIED the WAR';
+        }
+    }
+    //Play as many rounds as you want
+    function rockGame () {
+        let playerSelect = 'rock';
+
+        x.innerText= singleRound(playerSelect, computerPlay());
+        counter++;//for the overall game    
+        if (counter == finalScore) {
+            pauseGame();
+            return;
+        }
+    } 
+    function paperGame () {
+        let playerSelect = 'paper';
+
+        x.innerText= singleRound(playerSelect, computerPlay());
+        counter++;//for the overall game
+        if (counter == finalScore) {
+            pauseGame();
+            return;
+        }  
+    } 
+    function scissorsGame () {
+        let playerSelect = 'scissors';
+
+        x.innerText= singleRound(playerSelect, computerPlay());
+        counter++;//for the overall game
+        if (counter == finalScore) {
+            pauseGame();
+            return;
+        }
+    } 
+
+    rock.addEventListener('click', rockGame,false);
+    paper.addEventListener('click', paperGame,false);
+    scissors.addEventListener('click', scissorsGame,false);
+
+
+    //[]Add Event Listeners for each turn
+    //[]When SVG is clicked, a single round is played
+    //[]Upon Winning/Losing/or Tieing the Game, a BANNER appears
+    //Make Banner leave after 3 seconds
+    //[]Upon Winning/Losing, Each player's SCORE BUBBLE should increase
+    //Create flickering effect on NEON
+    //Place SVG into battle field to simulate choices made
+    //Create a ROCK, PAPER, SCISSOR, SHOOT (4x) delay effect
+    //
+
     </script>
 </body>
 </html>
