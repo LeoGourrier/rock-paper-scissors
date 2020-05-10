@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock | Paper | Scissors</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <p id="para">The Game</p>
+    <script>
+    let playerScore = 0;
+    let computerScore = 0;
+    //Returns a string with the first character CAPITALIZED
+    function capitalize(a) {
+        a = a.toLowerCase();
+        a = a.replace(a[0], a[0].toUpperCase());
+        return a;
+    }
+
+    //Generates a random number up to a given limit
+    //returns: a single number in the range of 0 - (given limit)
+    function getRandomNum(limit) {
+        limit = Math.floor(Math.random()*Math.floor(limit));
+        return limit;
+    }
+
+    //Decides the computer's decision
+    //returns: ROCK, PAPER, or SCISSORS
+    function computerPlay () {
+        let options = ['Rock','Paper','Scissors'];
+        return options[getRandomNum(3)];
+    }
+
+    //Plays a single round of Rock, Paper Scissors
+    //parameters are case insensitive: rock, ROCK, RocK are the same
+    //returns: "You Lose! Paper beats Rock"
+    function singleRound (playerSelection, computerSelection) {
+        playerSelection = capitalize(playerSelection);
+        computerSelection = capitalize(computerSelection);
+
+        if (playerSelection=='Rock'){
+            switch(computerSelection){
+                case 'Rock':
+                    return 'You Tie! Rock is equal to Rock';
+                    break;
+                case 'Paper':
+                    computerScore++;
+                    return 'You Lose! Paper beats Rock';
+                    break;
+                case 'Scissors': 
+                    playerScore++;
+                    return 'You Win! Rock beats Scissors';
+                    break;
+                default: 
+                    return 'Something wen\'t terribly wrong';
+            }
+        }
+        else if (playerSelection=='Paper') {
+            switch (computerSelection) {
+                case 'Rock':
+                    playerScore++;
+                    return 'You Win! Paper beats Rock';
+                    break;
+                case 'Paper':
+                    return 'You Tie! Paper is equal to Paper';
+                    break;
+                case 'Scissors':
+                    computerScore++;
+                    return 'You Lose! Scissors beat Paper';
+                    break;
+                default:
+                    return 'Something wen\'t terribly wrong';
+            }
+        }
+        else if (playerSelection=='Scissors') {
+            switch (computerSelection) {
+                case 'Rock':
+                    computerScore++;
+                    return 'You Lose! Rock beats Scissors';
+                    break;
+                case 'Paper':
+                    playerScore++;
+                    return 'You Win! Scissors beat Paper';
+                    break;
+                case 'Scissors':
+                    return 'You Tie! Scissors are equal to Scissors';
+                    break;
+                default:
+                    return 'Something wen\'t terribly wrong';
+            }
+        }
+        else {
+            return 'Something wen\'t terribly wrong';
+        }
+    }
+
+    //Play as many rounds as you want
+    function game (rounds) {
+        let counter = 0;
+        let playerSelect;
+
+        while (counter < 5){
+            console.log(singleRound(playerSelect = prompt('Choose: Rock, Paper, or Scissors!', 'scissors'), computerPlay()));
+            counter++;
+        }
+        if(playerScore > computerScore){
+            console.log('You have WON the WAR!');
+        }
+        else if (playerScore < computerScore){
+            console.log('You have LOST the WAR!');
+        }
+        else {
+            console.log('You have TIED the WAR');
+        }
+    }
+
+    game(5);
+    </script>
+</body>
+</html>
