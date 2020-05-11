@@ -162,9 +162,11 @@ body {
 }
 .choices svg path {
 	fill: #fb5b5a;
+	transition: all .8s ease-in-out;
 }
 .choices svg:hover path {
 	/* IF I WANT TO CHANGE THE COLOR OF THE HANDS*/
+	transform: scale(.7);
 }
 #theRock {
 	margin-left: 7px;
@@ -180,10 +182,13 @@ body {
 	height: 100px;
 	margin: 30%;
 }
-
 .userBattle svg path {
 	fill: #0193d6;
 }
 .compBattle svg path {
 	fill: #d64f01;
+}
+.simColor svg path {
+	fill: #32ff6a;
+	opacity: .5;
 }
