@@ -168,7 +168,7 @@
                     console.log('Rock vs Paper');
                     populateSimulation(playerSelection, computerSelection);
                     computerScore++;
-                    setTimeout(function(){ updateBubbleScore('c');},3400);
+                    setTimeout(function(){ updateBubbleScore('c');},3600);
                     //updateBubbleScore('c');
                     return 'You Lose! Paper beats Rock';
                     break;
@@ -176,7 +176,7 @@
                     console.log('Rock vs Scissors');
                     populateSimulation(playerSelection, computerSelection);
                     playerScore++;
-                    setTimeout(function(){ updateBubbleScore('p');},3400);
+                    setTimeout(function(){ updateBubbleScore('p');},3600);
                     //updateBubbleScore('p');
                     return 'You Win! Rock beats Scissors';
                     break;
@@ -190,7 +190,7 @@
                     console.log('Paper vs Rock');
                     populateSimulation(playerSelection, computerSelection);
                     playerScore++;
-                    setTimeout(function () { updateBubbleScore('p'); }, 3400);
+                    setTimeout(function () { updateBubbleScore('p'); }, 3600);
                     //updateBubbleScore('p');
                     return 'You Win! Paper beats Rock';
                     break;
@@ -203,7 +203,7 @@
                     console.log('Paper vs Scissors');
                     populateSimulation(playerSelection, computerSelection);
                     computerScore++; //BACKEND: CHANGES SCORE
-                    setTimeout(function () { updateBubbleScore('c'); }, 3400);
+                    setTimeout(function () { updateBubbleScore('c'); }, 3600);
                     //updateBubbleScore('c'); //FRONTEND CHANGES SCORE
                     return 'You Lose! Scissors beat Paper';
                     break;
@@ -217,7 +217,7 @@
                     console.log('Scissors vs Rock');
                     populateSimulation(playerSelection, computerSelection);
                     computerScore++;
-                    setTimeout(function () { updateBubbleScore('c'); }, 3400);
+                    setTimeout(function () { updateBubbleScore('c'); }, 3600);
                     //updateBubbleScore('c');
                     return 'You Lose! Rock beats Scissors';
                     break;
@@ -225,7 +225,7 @@
                     console.log('Scissors vs Paper');
                     populateSimulation(playerSelection, computerSelection);
                     playerScore++;
-                    setTimeout(function () { updateBubbleScore('p'); }, 3400);
+                    setTimeout(function () { updateBubbleScore('p'); }, 3600);
                     //updateBubbleScore('p');
                     return 'You Win! Scissors beat Paper';
                     break;
@@ -278,63 +278,91 @@
         document.getElementById('theRock').removeEventListener('click', rockGame, false);
         document.getElementById('thePaper').removeEventListener('click', paperGame, false);
         document.getElementById('theScissors').removeEventListener('click', scissorsGame, false);
+    }
+    //Sends endgame message
+    function endGame(){
         if (playerScore > computerScore) {
-            x.innerText = 'You have WON the WAR!';
+            x.innerHTML = 'You have WON the WAR!<span id="sp">Play Again</span>';
+            x.style='margin-top: 90px';
+            document.getElementById('sp').addEventListener('click', resetGame, false);
         }
         else if (playerScore < computerScore) {
-            x.innerText = 'You have LOST the WAR!';
+            x.innerHTML = 'You have LOST the WAR!<span id="sp">Play Again</span>';
+            x.style = 'margin-top: 90px';
+            document.getElementById('sp').addEventListener('click', resetGame, false);
         }
         else {
-            x.innerText = 'You have TIED the WAR';
+            x.innerHTML = 'You have TIED the WAR<span id="sp">Play Again</span>';
+            x.style = 'margin-top: 90px';
+            document.getElementById('sp').addEventListener('click', resetGame, false);
         }
     }
     //Plays 1 round per choice
     function rockGame () {
+        pauseGame();
         let playerSelect = 'rock';
         let theMessage = singleRound(playerSelect, computerPlay());
 
         //sends message a second after SVG populates
-        setTimeout(function(){ x.innerText = theMessage;},3000);
+        setTimeout(function(){ x.innerText = theMessage;},3200);
         //turns of message a little after the SVG populates
-        setTimeout(turnOff, 3900);
+        setTimeout(turnOff, 4300);
         counter++;//for the overall game    
         if (counter == finalScore) {
             setTimeout(pauseGame, 2800);
-            //pauseGame();
+            setTimeout(endGame, 4500);
             return;
         }
+        //retart listeners
+        setTimeout(resumeGame,4000);
+        //resumeGame();
     } 
     function paperGame () {
+        pauseGame();
         let playerSelect = 'paper';
         let theMessage = singleRound(playerSelect, computerPlay());
 
-        //sends message a second after SVG populates
-        setTimeout(function () { x.innerText = theMessage; }, 3000);
+        //sends message after SVG populates
+        setTimeout(function () { x.innerText = theMessage; }, 3200);
         //turns of message a little after the SVG populates
-        setTimeout(turnOff, 3900);
+        setTimeout(turnOff, 4300);
         counter++;//for the overall game
         if (counter == finalScore) {
             setTimeout(pauseGame, 2800);
-            //pauseGame();
+            setTimeout(endGame, 4500);
             return;
         }  
+        //retart listeners
+        setTimeout(resumeGame, 4000);
+        //resumeGame();
     } 
     function scissorsGame () {
+        pauseGame();
         let playerSelect = 'scissors';
         let theMessage = singleRound(playerSelect, computerPlay());
 
         //sends message a second after SVG populates
-        setTimeout(function () { x.innerText = theMessage; }, 3000);
+        setTimeout(function () { x.innerText = theMessage; }, 3200);
         //turns of message a little after the SVG populates
-        setTimeout(turnOff, 3900);
+        setTimeout(turnOff, 4300);
         counter++;//for the overall game
         if (counter == finalScore) {
             setTimeout(pauseGame,2800);
-            //pauseGame();
+            setTimeout(endGame, 4500);
             return;
         }
+        //retart listeners
+        setTimeout(resumeGame, 4000);
+        //resumeGame();
     } 
 
+    //Turns Event Listeners back on
+    function resumeGame() {
+        rock.addEventListener('click', rockGame, false);
+        paper.addEventListener('click', paperGame, false);
+        scissors.addEventListener('click', scissorsGame, false);
+    }
+    
     //Clears GAME message after 3 seconds
     function turnOff(){
         document.getElementById('message').innerText= '';
@@ -349,18 +377,18 @@
     //run populateBattleField 4 times. first 3 times are ROCK for both
     //populateSimulation(a,b)
     function populateSimulation(a,b) {
-        setTimeout(function () { populateSimColor('Rock', 'Rock'); }, 100);
+        setTimeout(function () { populateSimColor('Rock', 'Rock'); }, 50);
         turnOff();
         setTimeout(function () { populateSimColor('Paper', 'Paper'); }, 700);
         turnOff();
         setTimeout(function () { populateSimColor('Scissors', 'Scissors'); }, 1500);
         turnOff();
-        setTimeout(function(){ populateBattleField(a, b);},2200);
+        setTimeout(function(){ populateBattleField(a, b);},2520);
         //populateBattleField(a, b);
         
     }
-        //Places an SVG on both sides with distinct coloring
-        function populateSimColor(a, b) {
+    //Places an SVG on both sides with distinct coloring
+    function populateSimColor(a, b) {
             let userSide;
             let compSide;
             //USER SIDE SVG GRAB
@@ -481,7 +509,6 @@
             document.getElementById('playerInsulation').innerHTML = userSide;
             document.getElementById('computerInsulation').innerHTML = compSide;
         }
-
 
     //Places an SVG on both sides of the battle area
     function populateBattleField(a,b){
@@ -606,27 +633,33 @@
         document.getElementById('computerInsulation').innerHTML = compSide;
     }
 
-    //populateSimulation('Paper','Scissors');
+    //Resets Game 
+    function resetGame() {
+        playerScore = 0;
+        computerScore = 0;
+        finalScore = 5;
+        counter = 0;
+
+        //clears message
+        document.getElementById('message').innerHTML= '';
+        //clears score
+        document.getElementById('playerScore').innerHTML = `                                    <div class="score playerScore ps1"></div>
+                                    <div class="score playerScore ps2"></div>
+                                    <div class="score playerScore ps3"></div>
+                                    <div class="score playerScore ps4"></div>
+                                    <div class="score playerScore ps5"></div>`;
+        document.getElementById('computerScore').innerHTML = `                                    <div class="score computerScore cs1"></div>
+                                    <div class="score computerScore cs2"></div>
+                                    <div class="score computerScore cs3"></div>
+                                    <div class="score computerScore cs4"></div>
+                                    <div class="score computerScore cs5"></div>`;
+        resumeGame();
+    }
+    //x.innerHTML = 'You have TIED the WAR <span>Play Again</span>';
 
     rock.addEventListener('click', rockGame,false);
     paper.addEventListener('click', paperGame,false);
     scissors.addEventListener('click', scissorsGame,false);
-
-
-    //create function to insert SVG into battlefield
-    //if 'choice' is selected, choose appropriate SVG for both
-    //populateBattleField('rock', 'rock')::: place in singleRound()
-
-
-    //[]Add Event Listeners for each turn
-    //[]When SVG is clicked, a single round is played
-    //[]Upon Winning/Losing/or Tieing the Game, a BANNER appears
-    //[]Make Banner leave after 3 seconds
-    //[]Upon Winning/Losing, Each player's SCORE BUBBLE should increase
-    //[]Place SVG into battle field to simulate choices made
-    //[]Create a ROCK, PAPER, SCISSOR, SHOOT (4x) delay effect
-    //Create flickering effect on NEON
-
     </script>
 </body>
 </html>
