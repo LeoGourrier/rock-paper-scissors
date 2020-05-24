@@ -146,8 +146,8 @@
     //Decides the computer's decision
     //returns: ROCK, PAPER, or SCISSORS
     function computerPlay () {
-        let options = ['Rock','Paper','Scissors'];
-        return options[getRandomNum(3)];
+        let options = ['Rock','Paper','Scissors','Rock','Paper'];
+        return options[getRandomNum(options.length)];
     }
 
     //Plays a single round of Rock, Paper Scissors
@@ -374,18 +374,15 @@
         document.getElementById('computerInsulation').innerHTML = '';
     }
 
-    //run populateBattleField 4 times. first 3 times are ROCK for both
-    //populateSimulation(a,b)
+    //Simulation for: ROCK, PAPER, SCISSORS, SHOOT!
     function populateSimulation(a,b) {
-        setTimeout(function () { populateSimColor('Rock', 'Rock'); }, 50);
-        turnOff();
-        setTimeout(function () { populateSimColor('Paper', 'Paper'); }, 700);
-        turnOff();
-        setTimeout(function () { populateSimColor('Scissors', 'Scissors'); }, 1500);
-        turnOff();
-        setTimeout(function(){ populateBattleField(a, b);},2520);
-        //populateBattleField(a, b);
-        
+        let simTimes = [50, 700, 1500];
+        let simChoices = ['Rock', 'Paper', 'Scissors'];
+
+        for (let i=0; i<simTimes.length; i++) {
+            setTimeout(function () { populateSimColor(simChoices[i], simChoices[i]); }, simTimes[i]);
+        }        
+        setTimeout(function(){ populateBattleField(a, b);},2520);  
     }
     //Places an SVG on both sides with distinct coloring
     function populateSimColor(a, b) {

@@ -1,5 +1,9 @@
-This is my second project so far.
+Finished Game.
 
-URL to this project is:
+Features to Add: 
+() Responsive layout
+() Color Change Button
 
-https://leogourrier.github.io/rock-paper-scissors/
+LANGUAGES: HTML, CSS, JS
+
+URL: https://leogourrier.github.io/rock-paper-scissors/
